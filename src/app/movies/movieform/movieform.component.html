@@ -1,0 +1,175 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white px-5">
+
+  <div class="container-fluid d-flex justify-content-between" >
+
+    <a [routerLink]="['/movies/home']" class="navbar-brand">
+      <h1>
+        <img src="https://uploads-ssl.webflow.com/5f3acb2672fdcd41e36114fc/5f3acb2672fdcd5647611539_admiosdark.svg" alt="">Flix
+      </h1>
+    </a>   
+
+    <button class="navbar-toggler mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+
+      <ul class="navbar-nav">     
+        
+        <li class="nav-item mb-2 mx-1">
+          <a class="dangerbutton m-1"  [routerLink]="mode == 'add' ? ['/movies'] : ['/movies/'+movie.id] ">Back</a>          
+        </li>         
+
+      </ul>
+
+    </div>
+
+  </div>
+
+</nav>
+
+
+
+
+
+<div class="vh-100 m-0 p-0 d-flex align-content-center"  [style.background-image]="'url(' + backdrop_path + ')'" style="background-size: cover; background-position: center;">
+
+    <div class="row m-auto " >
+
+      <div class="col-12 col-md-4 text-end">
+        <img *ngIf="poster_path" src="{{poster_path}}" class="img-fluid"  alt="...">
+      </div>
+
+      <div class="col-12 col-md-8 contactformwrap pt-5 d-flex align-items-center">
+        <div class="w-100">
+          
+          
+          <form #formMovie="ngForm" (ngSubmit)="onSubmit(formMovie)" class="needs-validation">
+
+            <h2>{{mode == 'add' ? 'Add' : 'Edit' }} Movie</h2>
+    
+            <div class="mb-3">
+              <label for="title" class="form-label">Movie Title</label>
+              <input maxlength="300" type="text" class="form-control contactfield" id="title" name="title" [(ngModel)]="movie.title" required autocomplete="off">
+              <div class="invalid-feedback">
+                Please enter the movie title.
+              </div>
+            </div>
+
+           
+            <div class="mb-3">
+              <label for="rating" class="form-label">Movie rating </label><br>
+
+              <div class="btn-group w-100 rounded-pill" style="color: goldenrod;" role="group">
+
+                <input maxlength="300" type="radio" class="btn-check " name="rating" id="btnradio1" autocomplete="off" [(ngModel)]="movie.rating" [value]="1">
+                <label class="" for="btnradio1">
+                  <i *ngIf="1<= movie.rating" class="fa btn fa-star" style="font-size:24px; color: goldenrod;"></i>
+                  <i *ngIf="!movie.rating || 1> movie.rating" class="fa btn fa-star-o" style="font-size:24px; color: goldenrod;"></i>
+                </label>
+              
+                <input maxlength="300" type="radio" class="btn-check " name="rating" id="btnradio2" autocomplete="off" [(ngModel)]="movie.rating" [value]="2">
+                <label class="" for="btnradio2">
+                  <i *ngIf="2<= movie.rating" class="fa btn fa-star" style="font-size:24px; ; color: goldenrod;"></i>
+                  <i *ngIf="!movie.rating || 2> movie.rating" class="fa btn fa-star-o" style="font-size:24px; ; color: goldenrod;"></i>
+                </label>
+              
+                <input maxlength="300" type="radio" class="btn-check " name="rating" id="btnradio3" autocomplete="off" [(ngModel)]="movie.rating" [value]="3">
+                <label class="" for="btnradio3">
+                  <i *ngIf="3<= movie.rating" class="fa btn fa-star" style="font-size:24px; ; color: goldenrod;"></i>
+                  <i *ngIf="!movie.rating || 3> movie.rating" class="fa btn fa-star-o" style="font-size:24px; ; color: goldenrod;"></i>
+                </label>
+
+                <input maxlength="300" type="radio" class="btn-check " name="rating" id="btnradio4" autocomplete="off" [(ngModel)]="movie.rating" [value]="4">
+                <label class="" for="btnradio4">
+                  <i *ngIf="4<= movie.rating" class="fa btn fa-star" style="font-size:24px; ; color: goldenrod;"></i>
+                  <i *ngIf="!movie.rating || 4> movie.rating" class="fa btn fa-star-o" style="font-size:24px; ; color: goldenrod;"></i>
+                </label>
+
+                <input maxlength="300" type="radio" class="btn-check " name="rating" id="btnradio5" autocomplete="off" [(ngModel)]="movie.rating" [value]="5">
+                <label class="" for="btnradio5">
+                  <i *ngIf="5<= movie.rating" class="fa btn fa-star" style="font-size:24px;; color: goldenrod;"></i>
+                  <i *ngIf="!movie.rating || 5> movie.rating" class="fa btn fa-star-o" style="font-size:24px;; color: goldenrod;"></i>
+                </label>
+              </div>
+              <div class="invalid-feedback">
+                Please give a score to the movie.
+              </div>
+            </div>
+            
+            <div class="d-flex justify-content-between">
+              <div class="mb-3 w-50 mx-1">
+                <label for="releaseDate" class="form-label">Release Date</label>
+                <input maxlength="300" type="date" class="form-control contactfield" id="releaseDate" name="releaseDate" [(ngModel)]="movie.releaseDate" required>
+
+                <div class="invalid-feedback">
+                  Please enter the movie release date.
+                </div>
+              </div>
+    
+              <div class="mb-3 w-50 mx-1">
+                <label for="genre" class="form-label">Genre</label>
+                <input maxlength="300" type="text" class="form-control contactfield" id="genre" name="genre" [(ngModel)]="movie.genre" list="suggestions" autocomplete="off" required>
+
+                <div class="invalid-feedback">
+                  Please choose the movie genre.
+                </div>
+
+                <datalist id="suggestions">
+                  <option *ngFor="let genre of suggestedGenres" value="{{genre.name}}">
+                </datalist>
+
+              </div>
+
+            </div>
+            
+  
+            <div class="mb-3">
+              <label for="castCrew" class="form-label">Cast & Crew</label>
+              <input maxlength="300" type="text" class="form-control contactfield" id="castCrew" name="castCrew" [(ngModel)]="movie.castCrew" required autocomplete="off">
+              <div class="invalid-feedback">
+                Please enter cast & crew.
+              </div>
+            </div>
+    
+            <div class="mb-3 d-flex justify-content-between">
+              <a class="dangerbutton m-1"  [routerLink]="mode == 'add' ? ['/movies'] : ['/movies/'+movie.id] ">Back</a>
+
+              
+              <button type="submit" class="primarybuttonicon mx-1">{{mode == 'add' ? 'Add' : 'Edit' }}</button>              
+            </div>
+    
+           
+          </form>
+                          
+
+        </div>
+        
+      </div>
+    </div>
+
+    
+
+      
+      
+      
+    
+
+
+
+
+  
+
+</div>
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,120 @@
+<nav class="navbar navbar-expand-lg navbar-light  bg-white px-5">
+
+  <div class="container-fluid d-flex justify-content-between" >
+
+    <a  [routerLink]="['/movies/home']" class="navbar-brand">
+      <h1>
+        <img src="https://uploads-ssl.webflow.com/5f3acb2672fdcd41e36114fc/5f3acb2672fdcd5647611539_admiosdark.svg" alt="">Flix
+      </h1>
+    </a>
+
+    
+
+    <button class="navbar-toggler mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+
+      <ul class="navbar-nav">
+
+        <li class="nav-item mb-2 mx-1 ">
+
+          <form class="input-group flex-nowrap" #searchForm="ngForm" (ngSubmit)="searchMovie(searchForm)">
+
+            <button class="secondarybutton dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">{{genre ? genre : 'All'}}</button>
+
+            <ul class="dropdown-menu">
+              <li  (click)="loadMovies('All')"><a class="dropdown-item" >All</a></li>
+              <li *ngFor="let item of genres;" (click)="loadMovies(item, null)"><a class="dropdown-item" >{{item}}</a></li>
+            </ul>
+            <input maxlength="300" type="text" class="form-control contactfield"  name="title" ngModel>
+
+            <button class="primarybuttonicon" type="submit">Search</button>
+
+          </form>
+          
+        </li>
+
+        <li class="nav-item mb-2 mx-1">
+          <a class="btn primarybuttonicon" [routerLink]="['/movies/add']">Add movie</a>
+        </li>
+
+        <li class="nav-item mb-2 mx-1">
+          <button type="submit" class="secondarybutton" data-bs-toggle="modal" data-bs-target="#removeModal">Log Out</button>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+
+</nav>
+  
+<div *ngIf="loading" class="spinner-border" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>  
+
+
+<div *ngIf="!movies || movies.length <= 0">
+  <div *ngIf="!movie" class=" text-center w-100 m-0 p-0">
+
+    <div class="d-flex justify-content-center m-5">
+      <h1>There are no movies... Go and add some! </h1>
+    </div>
+
+    <div class="d-flex justify-content-center m-5">
+      <a class="m-1 d-flex justify-content-center primarybuttonicon" [routerLink]="['/movies/add']">Add movie</a>
+    </div>
+  
+  </div>
+  
+</div>
+
+<div *ngIf="!loading" class="container mt-2 ">
+  <div class="row row-cols-1 row-cols-md-2 g-2 d-flex justify-content-center">
+    <div *ngFor="let item of movies;"  class="col-6 col-sm-6 col-md-3">
+      <app-movie [item]="item"></app-movie>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!loading" class="container mt-5 ">
+  <div class="row">
+    <button (click)="loadMoreMovies()" *ngIf="page+1<total" class="primarybuttonicon mx-1 mb-5">Load More</button>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="removeModal" tabindex="-1" aria-labelledby="removeModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="removeModalLabel">Are you sure you want to log out?</h5>
+        <button #closeModal type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-footer d-flex justify-content-between">
+  
+        <button class="primarybuttonicon m-1" type="button"  data-bs-toggle="modal" data-bs-target="#removeModal">Stay in</button>
+        <button class="dangerbutton m-1" type="button"  data-bs-toggle="modal" (click)="logOut()" >Log out</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+

@@ -1,0 +1,64 @@
+
+
+
+<div class="container mt-5 ">
+  <div class="row d-flex justify-content-evenly">
+    <div class="col-md-4 text-center">
+
+        <h1>
+          <img src="https://uploads-ssl.webflow.com/5f3acb2672fdcd41e36114fc/5f3acb2672fdcd5647611539_admiosdark.svg" alt="">Flix
+        </h1>
+
+    </div>    
+  </div>
+</div>
+
+<div class="container mt-5 ">
+
+
+  <div class="row d-flex justify-content-evenly">
+    <div class="col-md-4 contactformwrap p-5">
+
+      <form #formLogin="ngForm" (ngSubmit)="onLogin(formLogin)" class="needs-validation" >
+
+        <h3 class="mb-3 bold">
+          Log in
+        </h3>
+  
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input maxlength="300" type="username" class="form-control contactfield" id="username" name="username" aria-describedby="username" ngModel required autocomplete="off">
+          <div class="invalid-feedback">
+            Please enter your username.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input maxlength="300" type="password" class="form-control contactfield" id="password" name="password" ngModel required autocomplete="off">
+          <div class="invalid-feedback">
+            Please enter your password.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <button type="submit" class="primarybuttonicon mx-1 ">Log In</button>
+        </div>
+
+        <hr>
+
+
+        <p class="d-flex justify-content-center">
+          No account? <a type="submit" class="mx-1 d-flex justify-content-center processlink" [routerLink]="['/auth/register']">Create account</a>
+        </p>
+        
+
+       
+      </form>
+
+    </div>
+  </div>
+  
+
+</div>
+

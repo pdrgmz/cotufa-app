@@ -1,0 +1,14 @@
+.img-container {
+    overflow: hidden;
+   height: 200px;
+    max-height: 300px;
+    position: relative;
+}
+
+.img {
+     display: block;
+     width: 100%;
+     height: auto;
+     position: absolute;
+     bottom: 0;
+ }

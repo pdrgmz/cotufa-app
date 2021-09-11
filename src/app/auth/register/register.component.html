@@ -1,0 +1,62 @@
+
+
+
+<div class="container mt-5 ">
+  <div class="row d-flex justify-content-evenly">
+    <div class="col-md-4 text-center">
+
+        <h1>
+          <img src="https://uploads-ssl.webflow.com/5f3acb2672fdcd41e36114fc/5f3acb2672fdcd5647611539_admiosdark.svg" alt="">Flix
+        </h1>
+
+    </div>    
+  </div>
+</div>
+
+<div class="container mt-5 ">
+
+
+  <div class="row d-flex justify-content-evenly">
+    <div class="col-md-4 contactformwrap p-5">
+
+      <form #formLogin="ngForm" (ngSubmit)="onRegister(formLogin)" class="needs-validation">
+
+        <h3 class="mb-3 bold">
+          Create an account
+        </h3>
+  
+        <div class="mb-3">
+          <label for="username" class="form-label">New Username</label>
+          <input maxlength="300" type="username" class="form-control contactfield" id="username" name="username" aria-describedby="username" ngModel required>
+          <div class="invalid-feedback">
+            Please enter your desired username.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">New password</label>
+          <input maxlength="300" type="password" class="form-control contactfield" id="password" name="password" ngModel required>
+          <div class="invalid-feedback">
+            Please enter your desired password.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <button type="submit" class="primarybuttonicon mx-1">Create Account</button>
+        </div>
+
+        <hr>
+        <p class="d-flex justify-content-center">
+          Have an account? <a type="submit" class="mx-1 processlink" [routerLink]="['/auth/login']" >Log in</a>
+        </p>
+        
+
+        
+      </form>
+
+    </div>
+  </div>
+  
+
+</div>
+
