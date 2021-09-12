@@ -9,7 +9,7 @@ import { Movie } from '../models/movie';
 @Injectable()
 export class MoviesService {
 
-  AUTH_SERVER: string = 'https://admiosflix-back.herokuapp.com';
+  AUTH_SERVER: string = 'https://cotufa-back.herokuapp.com';
 
   private jwt: string;
 

@@ -4,7 +4,7 @@
 
     <a  [routerLink]="['/movies/home']" class="navbar-brand">
       <h1>
-        <img src="https://uploads-ssl.webflow.com/5f3acb2672fdcd41e36114fc/5f3acb2672fdcd5647611539_admiosdark.svg" alt="">Flix
+        <img class="img-fluid w-25" src="https://userscontent2.emaze.com/images/ad80d6e2-f34c-40d7-b846-48ca876a1edc/571be566ceef328ccf57f0d50a6c6d49.png" alt="">
       </h1>
     </a>
 
@@ -22,7 +22,7 @@
 
           <form class="input-group flex-nowrap" #searchForm="ngForm" (ngSubmit)="searchMovie(searchForm)">
 
-            <button class="secondarybutton dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">{{genre ? genre : 'All'}}</button>
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">{{genre ? genre : 'All'}}</button>
 
             <ul class="dropdown-menu">
               <li  (click)="loadMovies('All')"><a class="dropdown-item" >All</a></li>
@@ -30,18 +30,18 @@
             </ul>
             <input maxlength="300" type="text" class="form-control contactfield"  name="title" ngModel>
 
-            <button class="primarybuttonicon" type="submit">Search</button>
+            <button class="btn btn-primary" type="submit">Search</button>
 
           </form>
           
         </li>
 
         <li class="nav-item mb-2 mx-1">
-          <a class="btn primarybuttonicon" [routerLink]="['/movies/add']">Add movie</a>
+          <a class="btn btn btn-primary" [routerLink]="['/movies/add']">Add movie</a>
         </li>
 
         <li class="nav-item mb-2 mx-1">
-          <button type="submit" class="secondarybutton" data-bs-toggle="modal" data-bs-target="#removeModal">Log Out</button>
+          <button type="submit" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#removeModal">Log Out</button>
         </li>
       </ul>
 
@@ -64,7 +64,7 @@
     </div>
 
     <div class="d-flex justify-content-center m-5">
-      <a class="m-1 d-flex justify-content-center primarybuttonicon" [routerLink]="['/movies/add']">Add movie</a>
+      <a class="m-1 d-flex justify-content-center btn btn-primary" [routerLink]="['/movies/add']">Add movie</a>
     </div>
   
   </div>
@@ -81,7 +81,7 @@
 
 <div *ngIf="!loading" class="container mt-5 ">
   <div class="row">
-    <button (click)="loadMoreMovies()" *ngIf="page+1<total" class="primarybuttonicon mx-1 mb-5">Load More</button>
+    <button (click)="loadMoreMovies()" *ngIf="page+1<total" class="btn btn-primary mx-1 mb-5">Load More</button>
   </div>
 </div>
 
@@ -97,8 +97,8 @@
       </div>
       <div class="modal-footer d-flex justify-content-between">
   
-        <button class="primarybuttonicon m-1" type="button"  data-bs-toggle="modal" data-bs-target="#removeModal">Stay in</button>
-        <button class="dangerbutton m-1" type="button"  data-bs-toggle="modal" (click)="logOut()" >Log out</button>
+        <button class="btn btn-primary m-1" type="button"  data-bs-toggle="modal" data-bs-target="#removeModal">Stay in</button>
+        <button class="btn btn-danger m-1" type="button"  data-bs-toggle="modal" (click)="logOut()" >Log out</button>
 
       </div>
     </div>

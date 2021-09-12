@@ -5,7 +5,7 @@
 
     <a [routerLink]="['/movies/home']" class="navbar-brand">
       <h1>
-        <img src="https://uploads-ssl.webflow.com/5f3acb2672fdcd41e36114fc/5f3acb2672fdcd5647611539_admiosdark.svg" alt="">Flix
+        <img class="img-fluid w-25" src="https://userscontent2.emaze.com/images/ad80d6e2-f34c-40d7-b846-48ca876a1edc/571be566ceef328ccf57f0d50a6c6d49.png "alt="">
       </h1>
     </a>   
 
@@ -18,7 +18,7 @@
       <ul class="navbar-nav">     
         
         <li class="nav-item mb-2 mx-1">
-          <a class="dangerbutton m-1"  [routerLink]="mode == 'add' ? ['/movies'] : ['/movies/'+movie.id] ">Back</a>          
+          <a class="btn btn-danger m-1"  [routerLink]="mode == 'add' ? ['/movies'] : ['/movies/'+movie.id] ">Back</a>          
         </li>         
 
       </ul>
@@ -41,7 +41,7 @@
         <img *ngIf="poster_path" src="{{poster_path}}" class="img-fluid"  alt="...">
       </div>
 
-      <div class="col-12 col-md-8 contactformwrap pt-5 d-flex align-items-center">
+      <div class="col-12 col-md-8 card-w-shadow pt-5 d-flex align-items-center">
         <div class="w-100">
           
           
@@ -134,10 +134,10 @@
             </div>
     
             <div class="mb-3 d-flex justify-content-between">
-              <a class="dangerbutton m-1"  [routerLink]="mode == 'add' ? ['/movies'] : ['/movies/'+movie.id] ">Back</a>
+              <a class="btn btn-danger m-1"  [routerLink]="mode == 'add' ? ['/movies'] : ['/movies/'+movie.id] ">Back</a>
 
               
-              <button type="submit" class="primarybuttonicon mx-1">{{mode == 'add' ? 'Add' : 'Edit' }}</button>              
+              <button type="submit" class="btn btn-primary mx-1">{{mode == 'add' ? 'Add' : 'Edit' }}</button>              
             </div>
     
            

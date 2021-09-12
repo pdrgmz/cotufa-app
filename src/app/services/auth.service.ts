@@ -13,7 +13,7 @@ import { Observable , BehaviorSubject, of } from 'rxjs';
 @Injectable()
 export class AuthService {
 
-  AUTH_SERVER: string = 'https://admiosflix-back.herokuapp.com';
+  AUTH_SERVER: string = 'https://cotufa-back.herokuapp.com';
 
   authSubject = new BehaviorSubject(false);
   private jwt: string;
