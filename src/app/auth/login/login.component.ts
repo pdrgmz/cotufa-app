@@ -43,9 +43,7 @@ export class LoginComponent implements OnInit {
 
     if(form.valid){
       this.authService.generateToken(form.value).subscribe(response =>{
-        if(response){
-          this.router.navigateByUrl('/movies/home');
-        }
+            this.router.navigateByUrl('/movies/home');
       })
     }
     

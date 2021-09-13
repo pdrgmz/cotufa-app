@@ -1,23 +1,8 @@
-
-
-
-<div class="container mt-5 ">
-  <div class="row d-flex justify-content-evenly">
-    <div class="col-md-4 text-center">
-
-        <h1>
-          <img class="img-fluid w-25" src="https://userscontent2.emaze.com/images/ad80d6e2-f34c-40d7-b846-48ca876a1edc/571be566ceef328ccf57f0d50a6c6d49.png" alt="">
-        </h1>
-
-    </div>    
-  </div>
-</div>
-
 <div class="container mt-5 ">
 
 
   <div class="row d-flex justify-content-evenly">
-    <div class="col-md-4 card-w-shadow p-5">
+    <div class="col-md-4 p-5">
 
       <form #formLogin="ngForm" (ngSubmit)="onLogin(formLogin)" class="needs-validation" >
 
@@ -27,7 +12,7 @@
   
         <div class="mb-3">
           <label for="username" class="form-label">Username</label>
-          <input maxlength="300" type="username" class="form-control contactfield" id="username" name="username" aria-describedby="username" ngModel required autocomplete="off">
+          <input maxlength="300" type="username" class="form-control" id="username" name="username" aria-describedby="username" ngModel required autocomplete="off">
           <div class="invalid-feedback">
             Please enter your username.
           </div>
@@ -35,21 +20,21 @@
 
         <div class="mb-3">
           <label for="password" class="form-label">Password</label>
-          <input maxlength="300" type="password" class="form-control contactfield" id="password" name="password" ngModel required autocomplete="off">
+          <input maxlength="300" type="password" class="form-control" id="password" name="password" ngModel required autocomplete="off">
           <div class="invalid-feedback">
             Please enter your password.
           </div>
         </div>
 
-        <div class="mb-3">
-          <button type="submit" class="btn btn-primary mx-1 ">Log In</button>
+        <div class="mb-3 d-grid">
+          <button type="submit" class="btn btn-primary mx-0 ">Log In</button>
         </div>
 
         <hr>
 
 
         <p class="d-flex justify-content-center">
-          No account? <a type="submit" class="mx-1 d-flex justify-content-center " [routerLink]="['/auth/register']">Create account</a>
+          No account? <a type="submit" class="mx-1 d-flex justify-content-center processlink" [routerLink]="['/auth/register']">Create account</a>
         </p>
         
 

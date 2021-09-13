@@ -30,6 +30,7 @@ export class MoviesService {
 
     return this.httpClient.get<any>( `${this.AUTH_SERVER}/movies` , { params: params });
   }
+  
 
   getMoviebyId(id){
     return this.httpClient.get<any>( `${this.AUTH_SERVER}/movies/${id}`);
@@ -41,7 +42,7 @@ export class MoviesService {
 
 
   getMoviesGenre(){
-    return this.httpClient.get<any>( `${this.AUTH_SERVER}/movies/genres` );
+    return this.httpClient.get<any>( `${this.AUTH_SERVER}/genres` );
   }
 
   getExtraMovie(title){

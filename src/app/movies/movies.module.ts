@@ -15,17 +15,21 @@ import { MovieformComponent } from './movieform/movieform.component';
 import { AuthService } from '../services/auth.service';
 import { HttpErrorInterceptor } from '../services/httperror-interceptor.service';
 
-
-
+import { LoginComponent } from '../auth/login/login.component';
+import { RegisterComponent } from '../auth/register/register.component';
+import { MoviesextraComponent } from './moviesextra/moviesextra.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, PaginatorComponent, MovieComponent, MoviedetailsComponent, MovieformComponent],
+  declarations: [LoginComponent, RegisterComponent, HomeComponent, PaginatorComponent, MovieComponent, MoviedetailsComponent, MovieformComponent, MoviesextraComponent],
   imports: [
     CommonModule,
     FormsModule,
     HttpClientModule,
-    MoviesRoutingModule
+    MoviesRoutingModule,
+    CommonModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers:[
     MoviesService,

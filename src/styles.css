@@ -5,7 +5,16 @@
     font-size: 14px;
 }
 
-.card-w-shadow {
+.card-w-shadow_old {
     background-color: #fff;
     box-shadow: 0 4px 80px 2px #c9ced6;
 }
+
+.card-w-shadow {
+    background-color: rgba(0, 0, 0, 0.116);  
+    backdrop-filter: blur(8px);
+    color: white;
+}
+
+
+

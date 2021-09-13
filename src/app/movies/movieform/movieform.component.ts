@@ -26,6 +26,43 @@ export class MovieformComponent implements OnInit {
   
   ngOnInit() {
 
+    
+
+    
+
+    console.log("ASDASD")
+
+    
+    this.idMovie = this.route.snapshot.params['id'];
+
+    this.mode = this.router.url.split('/').pop();
+
+    this.moviesService.getSuggestedGenres().subscribe(response =>{
+      if(response){
+        this.suggestedGenres = response.genres;    
+        console.log(this.suggestedGenres)    
+      }
+    })
+
+    if(this.mode == 'add'){
+      
+      this.poster_path = "https://via.placeholder.com/500x750?text=%20";
+      this.movie = { rating: 1};
+
+    }
+
+    if(this.mode == 'edit'){
+      this.moviesService.getMoviebyId(this.idMovie).subscribe(response =>{
+        if(response){
+          this.movie = response;
+          this.loadMovieImages(this.movie.title);          
+        }
+      })
+
+    }
+
+
+
     //Form inline validation iniciator
     (function () {
       'use strict'
@@ -44,33 +81,6 @@ export class MovieformComponent implements OnInit {
           }, false)
         })
     })()
-
-    this.idMovie = this.route.snapshot.params['id'];
-
-    this.mode = this.router.url.split('/').pop();
-
-    this.moviesService.getSuggestedGenres().subscribe(response =>{
-      if(response){
-        this.suggestedGenres = response.genres;    
-        console.log(this.suggestedGenres)    
-      }
-    })
-
-    if(this.mode == 'add'){
-      this.poster_path = "https://via.placeholder.com/500x750?text=%20";
-      this.movie = { rating: 1};
-
-    }
-
-    if(this.mode == 'edit'){
-      this.moviesService.getMoviebyId(this.idMovie).subscribe(response =>{
-        if(response){
-          this.movie = response;
-          this.loadMovieImages(this.movie.title);          
-        }
-      })
-
-    }
 
   }
 

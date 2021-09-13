@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Injectable, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Movie } from 'src/app/models/movie';
 import { AuthService } from 'src/app/services/auth.service';
@@ -31,9 +31,9 @@ export class HomeComponent implements OnInit {
   loading = false
 
   ngOnInit() {
-    this.loading = true
 
-    
+    this.loading = true 
+
     this.moviesService.getMoviesGenre().subscribe(response =>{
       if(response){
         this.genres =  response;
@@ -64,7 +64,6 @@ export class HomeComponent implements OnInit {
     this.genre = genre;
     this.moviesService.getMovies(genre, title ? title.trim() : title, 0, 8, null).subscribe(response =>{
       if(response){
-
         this.page = 0;
         this.size = 8;
         this.total = response.totalPages;

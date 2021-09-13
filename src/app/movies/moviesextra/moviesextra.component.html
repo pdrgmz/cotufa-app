@@ -1,0 +1,39 @@
+
+
+<div class="w-100 m-0 p-0 d-flex align-items-center" [style.background-image]="'url(' + movie.backdrop_path + ')'" style="background-size: cover; background-position: center; background-color: rgba(0, 0, 0, 0.473); background-blend-mode: darken;">
+
+  <div class="row mx-0 px-0 w-100 ">
+
+    <div class="col-sm-12 col-md-4 text-center">
+      <img class="img-fluid p-5" src="{{movie.poster_path}}" alt="" style="max-height: 500px;">
+    </div>
+
+    <div class="col-sm-12 col-md-8 d-flex align-items-center text-light" >
+      
+
+      <div class="w-100 p-5">
+        <h1 class="mb-3 text-uppercase">{{movie.title}} ({{movie.releaseDate | date:'yyyy'}})</h1>
+
+        <div class="mb-3" >  
+          <span class="mx-1" style="color: goldenrod;" *ngFor="let item of [].constructor(5); let i = index">
+            <i *ngIf="i+1 <= movie.rating" class="fa fa-star" style="font-size: 24px;"></i>
+            <i *ngIf="movie.rating < i+1 " class="fa fa-star-o" style="font-size: 24px;"></i>  
+          </span> 
+        </div>
+
+        <h4 class="text-uppercase"> {{movie.releaseDate | date:'MM-dd-yyyy'}} | {{movie.genre}}</h4>
+        
+      </div>
+      
+
+    </div>
+  </div>
+  
+
+</div>
+
+
+
+
+
+

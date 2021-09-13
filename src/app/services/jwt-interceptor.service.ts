@@ -23,7 +23,7 @@ export class JwtInterceptorService implements HttpInterceptor {
         }
       });
     }else{      
-      this.router.navigateByUrl('/auth/login');
+      //this.router.navigateByUrl('/auth/login');
     }
 
     return next.handle(request);

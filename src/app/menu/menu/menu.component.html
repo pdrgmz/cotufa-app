@@ -1,0 +1,78 @@
+<nav class="navbar navbar-expand-lg navbar-light  bg-white px-5">
+
+  <div class="container-fluid d-flex justify-content-between" >
+
+    <a  [routerLink]="['/movies/home']" class="navbar-brand">
+      <h1>
+        <img class="img-fluid w-25" src="https://userscontent2.emaze.com/images/ad80d6e2-f34c-40d7-b846-48ca876a1edc/571be566ceef328ccf57f0d50a6c6d49.png" alt="">
+        {{username}}
+      </h1>
+    </a>
+
+    
+
+    <button class="navbar-toggler mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+
+      <ul class="navbar-nav">
+
+
+        <li *ngIf="roles.includes('CREATOR')" class="nav-item mb-2 mx-1">
+          <a class="btn btn btn-primary" [routerLink]="['/movies/add']">Add movie</a>
+        </li>
+
+        <li *ngIf="username" class="nav-item mb-2 mx-1">
+          <button type="submit" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#removeModalLogOut">Log Out</button>
+        </li>
+
+        <li *ngIf="!username" class="nav-item mb-2 mx-1">
+          <button type="submit" class="btn btn-outline-primary" [routerLink]="['/auth/login']" >Log In</button>
+        </li>
+
+      </ul>
+
+    </div>
+
+  </div>
+
+</nav>
+
+<!-- Modal Log Out -->
+<div class="modal fade" id="removeModalLogOut" tabindex="-1" aria-labelledby="removeModalLogOutLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="removeModalLogOutLabel">Are you sure you want to log out?</h5>
+        <button #closeModalLogOut type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-footer d-flex justify-content-between">
+  
+        <button class="btn btn-primary m-1" type="button"  data-bs-toggle="modal" data-bs-target="#removeModalLogOut">Stay in</button>
+        <button class="btn btn-danger m-1" type="button"  data-bs-toggle="modal" (click)="logOut()" >Log out</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="removeModalRemoveMovie" tabindex="-1" aria-labelledby="removeModalRemoveMovieLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="removeModalRemoveMovieLabel">Are you sure to remove this movie?</h5>
+        <button #closeModalRemoveMovie type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-footer d-flex justify-content-between">
+  
+        <button class="btn btn-primary m-1" type="button"  data-bs-toggle="modal" data-bs-target="#removeModalRemoveMovie">Close</button>
+        <button class="btn btn-danger m-1" type="button"  data-bs-toggle="modal" (click)="removeMovie(movie.id)" >Remove</button>
+
+      </div>
+    </div>
+  </div>
+</div>
